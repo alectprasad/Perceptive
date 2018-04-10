@@ -1,5 +1,6 @@
 package com.var.perceptive;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class EventActivity extends AppCompatActivity {
 
     ListView eventListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,9 @@ public class EventActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 events clickedEvent = (events) eventListView.getItemAtPosition(i);
-                Toast.makeText(EventActivity.this, clickedEvent.eventDesc, Toast.LENGTH_SHORT).show();
+                Intent reportIntent = new Intent(EventActivity.this, ReportMapActivity.class);
+                reportIntent.putExtra("eventDesc", clickedEvent.eventDesc);
+                EventActivity.this.startActivity(reportIntent);
             }
         });
 

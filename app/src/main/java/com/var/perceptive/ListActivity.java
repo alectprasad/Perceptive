@@ -26,8 +26,8 @@ public class ListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if(!isInternetAvailable()){
-            Snackbar.make(findViewById(android.R.id.content),"No Connection",Snackbar.LENGTH_LONG).show();
+        if (!isInternetAvailable()) {
+            Snackbar.make(findViewById(android.R.id.content), "No Connection", Snackbar.LENGTH_LONG).show();
         }
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -41,7 +41,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public boolean isInternetAvailable() {
-        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
